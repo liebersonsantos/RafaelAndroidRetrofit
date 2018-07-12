@@ -45,7 +45,6 @@ public class RestClient {
                     .client(httpClient)
                     .build();
 
-
         return retrofit.create(Api.class);
     }
 

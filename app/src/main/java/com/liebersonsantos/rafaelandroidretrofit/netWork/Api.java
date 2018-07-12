@@ -18,5 +18,5 @@ public interface Api {
 //            "dtEmissao: 2018-07-10"
 //    })
     @POST("listarResumoVendaAgrupado")
-    Call<List<VendasResponse>> listarResumoVendas(@Body ParametroBody parametroBody);
+    Call<List<VendasR>> listarResumoVendas(@Body ParametroBody parametroBody);
 }
