@@ -6,7 +6,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Button;
 
 import com.liebersonsantos.rafaelandroidretrofit.adapter.AdapterVendas;
 import com.liebersonsantos.rafaelandroidretrofit.model.ParametroBody;
@@ -26,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "RESULTADO_RETROFIT";
     private ParametroBody parametroBody;
-    private VendasR vendasR;
     private AdapterVendas adapterVendas;
 
     @BindView(R.id.recyclerView_id)
@@ -44,12 +42,10 @@ public class MainActivity extends AppCompatActivity {
 
         settingsAdapter();
 
-
     }
 
     @OnClick(R.id.btnApi)
     void clickApi(){
-
         callingAPI();
     }
 
@@ -77,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.i(TAG, "onResponse:Size " + response.body());
 
                     adapterVendas.setVendasRList(response.body());
-
-
                 }else {
                     Log.i(TAG, "onResponseERRO: " + response.message());
                 }

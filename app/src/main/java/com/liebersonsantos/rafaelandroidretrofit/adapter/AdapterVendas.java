@@ -55,7 +55,6 @@ public class AdapterVendas extends RecyclerView.Adapter<AdapterVendas.AdapterVie
         @BindView(R.id.txt_dt_emissao_venda)
         TextView textDtEmissaoVenda;
 
-
         public AdapterViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
