@@ -6,6 +6,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.liebersonsantos.rafaelandroidretrofit.adapter.AdapterVendas;
 import com.liebersonsantos.rafaelandroidretrofit.model.ParametroBody;
@@ -26,9 +27,14 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "RESULTADO_RETROFIT";
     private ParametroBody parametroBody;
     private AdapterVendas adapterVendas;
+    private int tipoVenda;
 
     @BindView(R.id.recyclerView_id)
     RecyclerView recyclerView;
+    @BindView(R.id.edit_text_data)
+    EditText editDataEmissao;
+    @BindView(R.id.edit_text_tipo_venda)
+    EditText editTipoVenda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         parametroBody = new ParametroBody();
-        parametroBody.setDataEmissao("2018-07-10");
-        parametroBody.setVendaTipo(1);
 
         settingsAdapter();
 
@@ -46,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnApi)
     void clickApi(){
+        parametroBody.setVendaTipo(Integer.parseInt(editTipoVenda.getText().toString().trim()));
+        parametroBody.setDataEmissao(editDataEmissao.getText().toString().trim());
+
         callingAPI();
     }
 
@@ -61,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         RestClient.getInstance().listarResumoVendas(parametroBody).enqueue(new Callback<List<VendasR>>() {
             @Override
             public void onResponse(Call<List<VendasR>> call, Response<List<VendasR>> response) {
-
 //                if (response.body() != null){
                 if (response.isSuccessful()){
 
